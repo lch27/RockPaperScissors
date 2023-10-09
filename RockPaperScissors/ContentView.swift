@@ -26,30 +26,39 @@ struct ContentView: View {
                 Button(action: {
                     playGame(userChoice: "rock")
                 }) {
-                    Image("rock")
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                    Text("Rock")
+                    ZStack {
+                        Image("rock")
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                        Text("Rock")
+                    }
+
                 }
                 .buttonStyle(RoundedButtonStyle())
 
                 Button(action: {
                     playGame(userChoice: "paper")
                 }) {
-                    Image("paper")
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                    Text("Paper")
+                    ZStack{
+                        Image("paper")
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                        Text("Paper")
+                    }
+                
                 }
                 .buttonStyle(RoundedButtonStyle())
                 
                 Button(action: {
                     playGame(userChoice: "scissors")
                 }) {
-                    Image("scissors")
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                    Text("Scissors")
+                    ZStack{
+                        Image("scissors")
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                        Text("Scissors")
+                    }
+                   
                 }
                 .buttonStyle(RoundedButtonStyle())
             }
@@ -73,12 +82,12 @@ struct ContentView: View {
     }
     
 //    Swift
-        func playGame(userChoice: String) {
-            let compChoice = getComputerChoice()
-            let winner = determineWinner(userChoice, compChoice)
-            var result = winner
-        }
-        
+    func playGame(userChoice: String) {
+        let compChoice = getComputerChoice()
+        let winner = determineWinner(userChoice, compChoice)
+        self.result = winner // Assign the result to @State property
+    }
+    
         func getComputerChoice() -> String {
             let randomNumber = Int.random(in: 0...2)
             
